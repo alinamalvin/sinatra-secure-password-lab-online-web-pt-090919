@@ -17,7 +17,12 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/signup" do
-    #your code here
+   user = User.new(params)
+    if !!user.save and user.username.length > 0
+      redirect to "/login"
+    else
+      redirect to "/failure"
+    end
 
   end
 
